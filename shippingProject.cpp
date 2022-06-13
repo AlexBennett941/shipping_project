@@ -43,12 +43,17 @@ cout  << s3 << setw(20) << '.' << ':';
 cin >> orderCost;
 
 //shipping country
-string s4 = "Please enter destination. (usa/can/aus)";
+string s4 = "Please enter destination. (usa/can/aus/ukr)";
 cout << s4 << setw(10) << '.' << ':';
 cin >> shipDestination; 
 cout << endl << endl;
 //have to capitalize the destination to reduce error
 transform(shipDestination.begin(), shipDestination.end(), shipDestination.begin(), ::toupper);
+//adding fourth option of ukraine to the ship countries
+if(shipDestination == "UKR"){
+    cout << "Unfortunately Ukraine is currently an active warzone and we cannot complete your order :(";
+    exit(EXIT_SUCCESS);
+}
 //using nested if statements to determine how much the shipping cost will be to which country
 if(shipDestination == "USA"){
     if(orderCost < 50.00)
